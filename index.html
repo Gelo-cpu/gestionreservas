@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reservas UCH</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container my-5">
+        <header class="text-center mb-4">
+            <h1 class="display-6">📝 Sistema de Reserva de Actividades</h1>
+            <p class="lead text-muted">Formulario de registro para eventos y actividades universitarias.</p>
+        </header>
+
+        <div class="card shadow-sm mb-5">
+            <div class="card-header p-0">
+                <ul class="nav nav-tabs nav-fill" id="formTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" data-section="estudiante" type="button">1. Datos del Estudiante</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link disabled" data-section="actividad" type="button">2. Detalles de la Actividad</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link disabled" data-section="complementaria" type="button">3. Información Adicional</button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card-body p-4">
+                <form id="reservaForm" novalidate>
+                    <section id="section-estudiante">
+                        <h5 class="mb-3 border-bottom pb-2">Información Personal y Académica</h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="nombre" class="form-label">Nombre Completo</label>
+                                <input type="text" class="form-control" id="nombre" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="matricula" class="form-label">Matrícula</label>
+                                <input type="text" class="form-control" id="matricula" required maxlength="8">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="correo" class="form-label">Correo Institucional</label>
+                                <input type="email" class="form-control" id="correo" placeholder="usuario@uch.pe" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="telefono" class="form-label">Teléfono</label>
+                                <input type="tel" class="form-control" id="telefono" required maxlength="9">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="facultad" class="form-label">Facultad</label>
+                                <select class="form-select" id="facultad" required></select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="escuela" class="form-label">Escuela Profesional</label>
+                                <select class="form-select" id="escuela" required></select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="ciclo" class="form-label">Ciclo</label>
+                                <select class="form-select" id="ciclo" required>
+                                <option value="">Seleccione...</option>
+                                <option value="I">I</option>
+                                <option value="II">II</option>
+                                <option value="III">III</option>
+                                <option value="IV">IV</option>
+                                <option value="V">V</option>
+                                <option value="VI">VI</option>
+                                <option value="VII">VII</option>
+                                <option value="VIII">VIII</option>
+                                <option value="IX">IX</option>
+                                <option value="X">X</option>
+                            </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="edad" class="form-label">Edad</label>
+                                <input type="number" class="form-control" id="edad" min="15" max="99" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="genero" class="form-label">Género</label>
+                                <select class="form-select" id="genero" required>
+                                <option value="">Seleccione...</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end mt-4">
+                            <button type="button" class="btn btn-primary" id="btnToActividad">Siguiente &rarr;</button>
+                        </div>
+                    </section>
+
+                    <section id="section-actividad" class="d-none">
+                        <h5 class="mb-3 border-bottom pb-2">Detalles de la Actividad</h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="actividad" class="form-label">Tipo de Actividad</label>
+                                <select class="form-select" id="actividad" required>
+                                <option value="">Seleccione...</option>
+                                <option value="Teatro">Teatro</option>
+                                <option value="Danza">Danza</option>
+                                <option value="Taller">Taller</option>
+                                <option value="Club de Lectura">Club de Lectura</option>
+                                <option value="Excursión">Excursión</option>
+                                <option value="Música">Música</option>
+                            </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="detalle" class="form-label">Detalle</label>
+                                <select class="form-select" id="detalle" required></select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="fecha" class="form-label">Fecha</label>
+                                <input type="date" class="form-control" id="fecha" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="horaInicio" class="form-label">Hora Inicio</label>
+                                <input type="time" class="form-control" id="horaInicio" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="horaFin" class="form-label">Hora Fin</label>
+                                <input type="time" class="form-control" id="horaFin" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="lugar" class="form-label">Lugar</label>
+                                <select class="form-select" id="lugar" required></select>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="button" class="btn btn-secondary" id="btnBackEstudiante">&larr; Anterior</button>
+                            <button type="button" class="btn btn-primary" id="btnToComplementaria">Siguiente &rarr;</button>
+                        </div>
+                    </section>
+
+                    <section id="section-complementaria" class="d-none">
+                        <h5 class="mb-3 border-bottom pb-2">Información Adicional</h5>
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label for="motivo" class="form-label">Motivo de la Reserva (Opcional)</label>
+                                <textarea class="form-control" id="motivo" rows="3"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label for="necesidades" class="form-label">Necesidades Especiales (Opcional)</label>
+                                <textarea class="form-control" id="necesidades" rows="3"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="notificaciones">
+                                    <label class="form-check-label" for="notificaciones">
+                                    Acepto recibir notificaciones y recordatorios sobre esta reserva.
+                                </label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terminos" required>
+                                    <label class="form-check-label" for="terminos">
+                                    He leído y acepto los <a href="#">términos y condiciones</a>.
+                                </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="button" class="btn btn-secondary" id="btnBackActividad">&larr; Anterior</button>
+                            <button type="submit" class="btn btn-success">Finalizar Reserva</button>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h5 class="mb-0">Reservas Registradas</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Matrícula</th>
+                                <th>Carrera</th>
+                                <th>Actividad</th>
+                                <th>Detalle</th>
+                                <th>Fecha</th>
+                                <th>Horario</th>
+                                <th>Lugar</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reservaTable">
+                        </tbody>
+                    </table>
+                </div>
+                <nav>
+                    <ul class="pagination justify-content-center" id="pagination">
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
