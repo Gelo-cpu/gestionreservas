@@ -1,2 +1,0 @@
-# gestionreservas
-Gestion de reservas
